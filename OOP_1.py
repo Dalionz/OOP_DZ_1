@@ -112,6 +112,52 @@ class Reviewer(Mentor):
         res = f'Имя: {self.name}\nФамилия: {self.surname}'
         return res
 
+
+def average_score_hw(stud_list, course):
+    '''
+    Функция возвращает F-строку со средним баллом за курс,
+    на входе функция принимает 2 параметра: список студентов и название курса.
+    '''
+    aver_score = 0
+    count = 0
+    for i in stud_list:
+        if course in i.grades.keys() and isinstance(i, Student): # защита от ошибок, и проверка на соответствиее класса
+            for j in i.grades[course]:
+                aver_score += j
+                count += 1
+        else:
+            continue
+    if aver_score > 0:
+        res = round(aver_score / count, 1)
+        res_score = f'Средний балл за домашние задания на курсе {course}: {res}'
+        return res_score
+    else:
+        res_not_score = f'Оценки за домашнее задание на курсе {course} не проставлены!'
+        return res_not_score
+
+def average_score_lect(lect_list, course):
+    '''
+        Функция возвращает F-строку со средним баллом за курс,
+        на входе функция принимает 2 параметра: список лекторов и название курса.
+        '''
+    aver_score = 0
+    count = 0
+    for i in lect_list:
+        if course in i.grades.keys() and isinstance(i, Lecturer):  # защита от ошибок, и проверка на соответствиее класса
+            for j in i.grades[course]:
+                aver_score += j
+                count += 1
+        else:
+            continue
+    if aver_score > 0:
+        res = round(aver_score / count, 1)
+        res_score = f'Средняя оценка за лекции на курсе {course}: {res}'
+        return res_score
+    else:
+        res_not_score = f'Оценки за лекции на курсе {course} не проставлены!'
+        return res_not_score
+
+
 cool_lecturer_Python = Lecturer('Иван', 'Иванов')
 cool_lecturer_Python.courses_attached += ['Python']
 cool_lecturer_Python.courses_attached += ['GIT']
@@ -140,7 +186,6 @@ cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'GIT', 7)
 cool_mentor.rate_hw(best_student, 'GIT', 7)
 
-
 cool_mentor.rate_hw(bad_student, 'Python', 4)
 cool_mentor.rate_hw(bad_student, 'Python', 4)
 cool_mentor.rate_hw(bad_student, 'Python', 4)
@@ -148,7 +193,6 @@ cool_mentor.rate_hw(bad_student, 'Python', 4)
 
 cool_mentor.rate_hw(bad_student, 'GIT', 10)
 cool_mentor.rate_hw(bad_student, 'GIT', 10)
-
 
 best_student.rate_lecture(cool_lecturer_Python, 'Python', 9)
 best_student.rate_lecture(cool_lecturer_Python, 'Python', 10)
@@ -158,54 +202,8 @@ best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
 best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
 best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
 
-
 student_list = [bad_student, best_student]
 lectures_list = [cool_lecturer_Python, bad_lecturer_Python]
-
-def average_score_hw(stud_list, course):
-    '''
-    Функция возвращает F-строку со средним баллом за курс,
-    на входе функция принимает 2 параметра: список студентов и название курса.
-    '''
-    aver_score = 0
-    count = 0
-    for i in stud_list:
-        if course in i.grades.keys() and isinstance(i, Student): # защита от ошибок, и проверка на соответствиее класса
-            for j in i.grades[course]:
-                aver_score += j
-                count += 1
-        else:
-            continue
-    if aver_score > 0:
-        res = round(aver_score / count, 1)
-        res_score = f'Средний балл за домашние задания на курсе {course}: {res}'
-        return res_score
-    else:
-        res_not_score = f'Оценки за домашнее задание на курсе {course} не проставлены!'
-        return res_not_score
-
-def average_score_lect(lect_list, course):
-    '''
-        Функция возвращает F-строку со средним баллом за курс,
-        на входе функция принимает 2 параметра: список студентов и название курса.
-        '''
-    aver_score = 0
-    count = 0
-    for i in lect_list:
-        if course in i.grades.keys() and isinstance(i, Lecturer):  # защита от ошибок, и проверка на соответствиее класса
-            for j in i.grades[course]:
-                aver_score += j
-                count += 1
-        else:
-            continue
-    if aver_score > 0:
-        res = round(aver_score / count, 1)
-        res_score = f'Средняя оценка за лекции на курсе {course}: {res}'
-        return res_score
-    else:
-        res_not_score = f'Оценки за лекции на курсе {course} не проставлены!'
-        return res_not_score
-
 
 print(cool_mentor)
 print()
