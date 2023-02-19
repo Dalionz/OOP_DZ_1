@@ -112,55 +112,6 @@ class Reviewer(Mentor):
         res = f'Имя: {self.name}\nФамилия: {self.surname}'
         return res
 
-cool_lecturer_Python = Lecturer('Иван', 'Иванов')
-cool_lecturer_Python.courses_attached += ['Python']
-cool_lecturer_Python.courses_attached += ['GIT']
-
-bad_lecturer_Python = Lecturer('Петя', 'Петров')
-bad_lecturer_Python.courses_attached += ['Python']
-bad_lecturer_Python.courses_attached += ['GIT']
-
-best_student = Student('Ruoy', 'Eman')
-best_student.courses_in_progress += ['Python']
-best_student.courses_in_progress += ['GIT']
-best_student.finished_courses += ['JS']
-
-bad_student = Student('Коля', 'Николаев')
-bad_student.courses_in_progress += ['Python']
-bad_student.courses_in_progress += ['GIT']
-
-cool_mentor = Reviewer('Some', 'Buddy')
-cool_mentor.courses_attached += ['Python']
-cool_mentor.courses_attached += ['GIT']
-
-cool_mentor.rate_hw(best_student, 'Python', 5)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-
-cool_mentor.rate_hw(best_student, 'GIT', 7)
-cool_mentor.rate_hw(best_student, 'GIT', 7)
-
-
-cool_mentor.rate_hw(bad_student, 'Python', 4)
-cool_mentor.rate_hw(bad_student, 'Python', 4)
-cool_mentor.rate_hw(bad_student, 'Python', 4)
-cool_mentor.rate_hw(bad_student, 'Python', 4)
-
-cool_mentor.rate_hw(bad_student, 'GIT', 10)
-cool_mentor.rate_hw(bad_student, 'GIT', 10)
-
-
-best_student.rate_lecture(cool_lecturer_Python, 'Python', 9)
-best_student.rate_lecture(cool_lecturer_Python, 'Python', 10)
-best_student.rate_lecture(cool_lecturer_Python, 'Python', 9)
-
-best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
-best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
-best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
-
-
-student_list = [bad_student, best_student]
-lectures_list = [cool_lecturer_Python, bad_lecturer_Python]
 
 def average_score_hw(stud_list, course):
     '''
@@ -206,6 +157,53 @@ def average_score_lect(lect_list, course):
         res_not_score = f'Оценки за лекции на курсе {course} не проставлены!'
         return res_not_score
 
+
+cool_lecturer_Python = Lecturer('Иван', 'Иванов')
+cool_lecturer_Python.courses_attached += ['Python']
+cool_lecturer_Python.courses_attached += ['GIT']
+
+bad_lecturer_Python = Lecturer('Петя', 'Петров')
+bad_lecturer_Python.courses_attached += ['Python']
+bad_lecturer_Python.courses_attached += ['GIT']
+
+best_student = Student('Ruoy', 'Eman')
+best_student.courses_in_progress += ['Python']
+best_student.courses_in_progress += ['GIT']
+best_student.finished_courses += ['JS']
+
+bad_student = Student('Коля', 'Николаев')
+bad_student.courses_in_progress += ['Python']
+bad_student.courses_in_progress += ['GIT']
+
+cool_mentor = Reviewer('Some', 'Buddy')
+cool_mentor.courses_attached += ['Python']
+cool_mentor.courses_attached += ['GIT']
+
+cool_mentor.rate_hw(best_student, 'Python', 5)
+cool_mentor.rate_hw(best_student, 'Python', 10)
+cool_mentor.rate_hw(best_student, 'Python', 10)
+
+cool_mentor.rate_hw(best_student, 'GIT', 7)
+cool_mentor.rate_hw(best_student, 'GIT', 7)
+
+cool_mentor.rate_hw(bad_student, 'Python', 4)
+cool_mentor.rate_hw(bad_student, 'Python', 4)
+cool_mentor.rate_hw(bad_student, 'Python', 4)
+cool_mentor.rate_hw(bad_student, 'Python', 4)
+
+cool_mentor.rate_hw(bad_student, 'GIT', 10)
+cool_mentor.rate_hw(bad_student, 'GIT', 10)
+
+best_student.rate_lecture(cool_lecturer_Python, 'Python', 9)
+best_student.rate_lecture(cool_lecturer_Python, 'Python', 10)
+best_student.rate_lecture(cool_lecturer_Python, 'Python', 9)
+
+best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
+best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
+best_student.rate_lecture(bad_lecturer_Python, 'Python', 5)
+
+student_list = [bad_student, best_student]
+lectures_list = [cool_lecturer_Python, bad_lecturer_Python]
 
 print(cool_mentor)
 print()
