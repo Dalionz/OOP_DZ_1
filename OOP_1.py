@@ -112,7 +112,6 @@ class Reviewer(Mentor):
         res = f'Имя: {self.name}\nФамилия: {self.surname}'
         return res
 
-
 def average_score_hw(stud_list, course):
     '''
     Функция возвращает F-строку со средним баллом за курс,
@@ -121,7 +120,8 @@ def average_score_hw(stud_list, course):
     aver_score = 0
     count = 0
     for i in stud_list:
-        if course in i.grades.keys() and isinstance(i, Student): # защита от ошибок, и проверка на соответствиее класса
+        if course in i.grades.keys() and isinstance(i,
+                                                    Student):  # защита от ошибок, и проверка на соответствиее класса
             for j in i.grades[course]:
                 aver_score += j
                 count += 1
@@ -143,7 +143,7 @@ def average_score_lect(lect_list, course):
     aver_score = 0
     count = 0
     for i in lect_list:
-        if course in i.grades.keys() and isinstance(i, Lecturer):  # защита от ошибок, и проверка на соответствиее класса
+        if course in i.grades.keys() and isinstance(i,Lecturer):  # защита от ошибок, и проверка на соответствиее класса
             for j in i.grades[course]:
                 aver_score += j
                 count += 1
@@ -170,6 +170,7 @@ best_student = Student('Ruoy', 'Eman')
 best_student.courses_in_progress += ['Python']
 best_student.courses_in_progress += ['GIT']
 best_student.finished_courses += ['JS']
+best_student.finished_courses += ['C++']
 
 bad_student = Student('Коля', 'Николаев')
 bad_student.courses_in_progress += ['Python']
@@ -209,11 +210,13 @@ print(cool_mentor)
 print()
 print(bad_lecturer_Python)
 print()
-print(bad_student)
+print(best_student)
 print()
 print(bad_student < best_student)
 print()
 print(cool_lecturer_Python > bad_lecturer_Python)
+print()
+print(cool_lecturer_Python == bad_lecturer_Python)
 print()
 print(average_score_lect(lectures_list, 'Python'))
 print()
